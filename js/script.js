@@ -91,36 +91,38 @@ const questions = [
     },
 ];
 
+
+
 const questionElement = document.getElementById('question');
 const answerButton = document.getElementById('answers');
 const nextButton = document.getElementById('next-btn');
+const scoreElement = document.getElementById('currentScore');
+const timerElement = document.getElementById('time');
+const questionNumber = document.getElementById('questionNumber');
 
 let currentQuestionIndex = 0;
 let score = 0;
 let timer; 
-const timeLimit = 10; 
+const timeLimit = 10;
 
-function startQuiz(){
+function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion();
 }
 
-function showQuestion(){
+function showQuestion() {
     resetState();
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ".  " + currentQuestion.question;
-
-    document.getElementById('questionNumber').textContent = currentQuestionIndex + 1;
-    document.getElementById('currentScore').textContent = score
-
-    
+    scoreElement.textContent = score; 
+    questionNumber.textContent = questionNo + "/" + questions.length;
     startTimer();
 
     currentQuestion.answers.forEach(answer => {
-        const button = document.createElement("button"); 
+        const button = document.createElement("button");
         button.innerHTML = answer.Text;
         button.classList.add("btn");
         answerButton.appendChild(button);
@@ -131,59 +133,59 @@ function showQuestion(){
     });
 }
 
-
 function startTimer() {
     let timeRemaining = timeLimit;
-    document.getElementById('time').innerText = timeRemaining; 
+    timerElement.innerText = timeRemaining;
     timer = setInterval(() => {
         timeRemaining--;
-        document.getElementById('time').innerText = timeRemaining; 
+        timerElement.innerText = timeRemaining;
         if (timeRemaining <= 0) {
-            clearInterval(timer); 
-            selectAnswer({ target: null }); 
+            clearInterval(timer);
+            selectAnswer({ target: null });
         }
     }, 1000);
 }
 
-
-
-function resetState(){
+function resetState() {
     nextButton.style.display = 'none';
-    while(answerButton.firstChild){
+    while (answerButton.firstChild) {
         answerButton.removeChild(answerButton.firstChild);
     }
 }
 
-function selectAnswer(e){
-    clearInterval(timer); 
-    const selectedbtn = e.target;
-    const isCorrect = selectedbtn && selectedbtn.dataset.correct === "true"; 
-    if(isCorrect){
-        selectedbtn.classList.add("correct");
+function selectAnswer(e) {
+    clearInterval(timer);
+    const selectedButton = e.target;
+    const isCorrect = selectedButton && selectedButton.dataset.correct === "true";
+    if (isCorrect) {
+        selectedButton.classList.add("correct");
         score++;
-    } else if (selectedbtn) {
-        selectedbtn.classList.add("incorrect");
+    } else if (selectedButton) {
+        selectedButton.classList.add("incorrect");
     }
 
     Array.from(answerButton.children).forEach(button => {
-        if(button.dataset.correct === "true"){
+        if (button.dataset.correct === "true") {
             button.classList.add("correct");
         }
         button.disabled = true;
     });
+    scoreElement.textContent = score;
     nextButton.style.display = "block";
 }
 
-function showScore(){
+function showScore() {
     resetState();
-    questionElement.innerHTML = 'your score is ' + score +' score out of 10';
-
-    localStorage.setItem('finalScore', score);
+    questionElement.innerHTML = 'Your score is ' + score + ' out of ' + questions.length;
+    localStorage.setItem('finalScore', score); 
+    setTimeout(() => {
+        window.location.href = 'welcome-page.html';
+    }, 3000);
 }
 
-function handelenextbutton(){
+function handleNextButton() {
     currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
+    if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
         showScore();
@@ -191,13 +193,11 @@ function handelenextbutton(){
 }
 
 nextButton.addEventListener('click', () => {
-    if(currentQuestionIndex < questions.length){
-        handelenextbutton();
+    if (currentQuestionIndex < questions.length) {
+        handleNextButton();
     } else {
         startQuiz();
     }
 });
-
-
 
 startQuiz();
