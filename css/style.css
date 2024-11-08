@@ -1,0 +1,262 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+body{
+    /* background-color: #D9D9D9; */
+    background: linear-gradient(120deg, #0876E3, #FEFEFE);
+
+}
+
+.container{
+    background: linear-gradient(120dg, #0876E3, #FEFEFE);
+    width: 639px;
+    height: 400px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Grover{
+    font-family: "Istok Web", serif;
+}
+
+
+.col{
+    margin-top: 1%;
+    margin-bottom: 0;
+}
+
+
+
+h1{
+    font-family: 'Inria Serif', serif;
+    font-weight: 400;
+}
+
+
+.start-btn{
+    background-color: transparent;
+    width: 419px;
+    height: 105px;
+    border: none;
+    border-radius: 19px;
+    font-family: "Istok Web", serif;
+    font-size: 48px;
+    box-shadow: 0px 2px 4px rgb(0, 0, 0);
+    margin-top: 22%;
+}
+
+.start-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); 
+    transform: scale(0.95); 
+    cursor: pointer;
+}
+
+
+.col-1{
+    margin-top: 6%;
+}
+
+
+.qust{
+    font-family: "Istok Web", serif;
+}
+
+
+
+.questions{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    height: 40%;
+}
+
+.styling-btn{
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.styling-btn:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    text-transform: calc(0.95);
+}
+
+
+.border-left-0{
+    border-left: none;
+}
+
+.border-top-0{
+    border-top: none;
+}
+
+.border-right-0{
+    border-right: none;
+}
+
+.border-bottom-0{
+    border-bottom: none;
+}
+
+
+.left-b{
+    border-left: 2.5px solid white;
+}
+
+
+.bottom-b{
+    border-bottom: 2.5px solid white;
+}
+
+.alignig{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Istok Web", serif;
+    font-size: 20px;
+}
+
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0%;
+    margin-top: 3%;
+}
+
+.footer-line{
+    color: white;
+    background-color: white;
+    border: none;
+    height: 2px;
+    width: 100%;
+
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1%;
+    font-family: "Istok Web", serif;
+    font-size: 24px;
+}
+
+.margin-left-5{
+    margin-left: 5%;
+}
+
+.margin-right-5{
+    margin-right: 5%;
+}
+
+
+#next-btn{
+    display: none;
+}
+
+/* .correct{
+    background: #9aeabc;
+}
+
+.incorrect{
+    background: #ff9393;
+} */
+
+
+
+.next-button{
+    background-color: transparent;
+    width: 30%;
+    height: 15%;
+    margin-top: 3%;
+    font-family: "Istok Web";
+    font-size: x-large;
+}
+
+.next-button:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    text-transform: calc(0.95);
+    
+}
+
+/* .btn{
+    background-color: transparent;
+    border: none;
+}
+
+
+.btn:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+} */
+
+
+
+
+/* .stylish{
+    background-color: transparent;
+} */
+
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  
+  }
+
+
+
+  @keyframes correct {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+
+
+.btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Istok Web';
+}
+
+.btn.correct {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.btn.incorrect {
+    background-color: #f44336;
+    color: white;
+    animation: shake 0.3s ease;
+    border-radius: 2px;
+    opacity: 70%;
+}
+
+.btn:hover {
+    opacity: 0.8; 
+}
+
+
+.timer{
+    font-family: 'Istok Web';
+    font-size: large;
+    margin-top: 2%;
+}
